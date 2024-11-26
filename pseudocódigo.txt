@@ -1,0 +1,84 @@
+INICIAR conexão com banco de dados "garcom2.db"
+CRIAR tabelas:
+    - "itens" com colunas: id, nome, descricao, fornecedor, valor
+    - "listas" com colunas: id, nome_lista
+    - "itens_lista" com colunas: id_lista, id_item, quantidade
+
+MOSTRAR barra lateral com opções:
+    - "Adicionar/Excluir Itens"
+    - "Criar Lista"
+    - "Visualizar Listas"
+    - "Visualizar Itens"
+
+SE "Adicionar/Excluir Itens" selecionado:
+    MOSTRAR título "Adicionar/Excluir Itens"
+    MOSTRAR seletor "Adicionar" ou "Excluir"
+
+    SE "Adicionar" selecionado:
+        MOSTRAR campos para:
+            - Nome
+            - Descrição
+            - Fornecedor
+            - Valor
+        SE botão "Salvar" pressionado:
+            SE todos os campos preenchidos:
+                INSERIR dados na tabela "itens"
+                MOSTRAR mensagem de sucesso
+            SENÃO:
+                MOSTRAR mensagem de erro
+
+    SE "Excluir" selecionado:
+        MOSTRAR campo para digitar ID do item
+        SE botão "Excluir" pressionado:
+            CONFIRMAR exclusão
+            SE "Confirmar" pressionado:
+                VERIFICAR se o ID existe
+                SE existir:
+                    DELETAR item com ID da tabela "itens"
+                    MOSTRAR mensagem de sucesso
+                SENÃO:
+                    MOSTRAR mensagem de erro
+            SE "Cancelar" pressionado:
+                CANCELAR operação
+
+SE "Criar Lista" selecionado:
+    MOSTRAR título "Criar Lista"
+    MOSTRAR campo para nome da nova lista
+    SE botão "Criar Lista" pressionado:
+        SE nome fornecido:
+            INSERIR nova lista na tabela "listas"
+            MOSTRAR mensagem de sucesso
+        SENÃO:
+            MOSTRAR mensagem de erro
+
+    MOSTRAR listas existentes
+    SE uma lista selecionada:
+        MOSTRAR itens disponíveis
+        SE um item selecionado:
+            MOSTRAR campo para quantidade
+            SE botão "Adicionar Item à Lista" pressionado:
+                INSERIR item e quantidade na tabela "itens_lista"
+                MOSTRAR mensagem de sucesso
+
+SE "Visualizar Listas" selecionado:
+    MOSTRAR título "Visualizar Listas"
+    CONSULTAR itens e quantidades associados às listas
+    SE existirem listas:
+        PARA cada lista:
+            CALCULAR valor total (quantidade * valor dos itens)
+            MOSTRAR lista com:
+                - Nome
+                - Valor Total
+                - Itens (expandir para exibir detalhes: ID, nome, valor, quantidade)
+    SENÃO:
+        MOSTRAR mensagem "Nenhuma lista criada"
+
+SE "Visualizar Itens" selecionado:
+    MOSTRAR título "Visualizar Itens"
+    CONSULTAR todos os itens da tabela "itens"
+    SE existirem itens:
+        MOSTRAR tabela com ID, Nome, Descrição, Fornecedor, Valor
+    SENÃO:
+        MOSTRAR mensagem "Adicione algum item"
+
+FECHAR conexão com banco de dados

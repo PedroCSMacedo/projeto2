@@ -1,0 +1,36 @@
+1. Configuração do Banco de Dados
+Banco e Tabelas: Conecta-se ao banco garcom2.db e define três tabelas:
+itens: Para armazenar informações de itens (nome, descrição, fornecedor e valor).
+listas: Para gerenciar as listas criadas.
+itens_lista: Relaciona itens às listas com quantidades associadas.
+2. Interface Principal
+A barra lateral oferece 4 opções:
+
+Adicionar/Excluir Itens
+Criar Lista
+Visualizar Listas
+Visualizar Itens
+3. Funcionalidades
+Adicionar/Excluir Itens
+Adicionar:
+Permite inserir um novo item ao banco após preencher: Nome, Descrição, Fornecedor e Valor.
+Valida se todos os campos estão preenchidos antes de salvar.
+Excluir:
+Permite deletar um item pelo ID informado.
+Confirmação dupla para evitar exclusões acidentais.
+Verifica se o ID existe antes de excluir.
+Criar Lista
+Criação de uma nova lista pelo nome.
+Adição de itens às listas já existentes, selecionando o item e a quantidade.
+Visualizar Listas
+Exibe todas as listas criadas, incluindo:
+Nome da lista, itens associados e quantidade.
+Valor total da lista (calculado multiplicando o valor do item pela quantidade).
+Visualizar Itens
+Mostra uma tabela com todos os itens cadastrados, incluindo:
+ID, Nome, Descrição, Fornecedor e Valor.
+4. Fluxo de Dados
+As ações dos usuários (adicionar, excluir, visualizar) refletem diretamente no banco SQLite.
+As listas e itens são apresentados de forma interativa e detalhada para facilitar a navegação.
+Resultado
+A aplicação é útil para gerenciar itens e listas de forma simples e eficiente, sendo adequada para uso em pequenos negócios ou gerenciamento pessoal.
